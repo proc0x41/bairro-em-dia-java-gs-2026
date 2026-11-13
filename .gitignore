@@ -6,3 +6,5 @@ data/
 *.log
 .idea/
 .vscode/
+.private/
+ACESSO-PROFESSOR.txt
