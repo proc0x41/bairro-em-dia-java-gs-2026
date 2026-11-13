@@ -1,0 +1,201 @@
+{
+  "checkedAt": "2026-11-13T16:02:29.231Z",
+  "profile": "oracle",
+  "database": "Oracle FIAP 19c",
+  "api": "http://127.0.0.1:18081",
+  "passed": true,
+  "checks": [
+    {
+      "check": "Saúde da API no perfil Oracle",
+      "method": "GET",
+      "route": "/actuator/health",
+      "status": 200
+    },
+    {
+      "check": "Consulta das categorias iniciais",
+      "method": "GET",
+      "route": "/categorias",
+      "status": 200
+    },
+    {
+      "check": "Cadastro de categoria com 201 e Location",
+      "method": "POST",
+      "route": "/categorias",
+      "status": 201
+    },
+    {
+      "check": "Consulta de categoria por ID",
+      "method": "GET",
+      "route": "/categorias/103",
+      "status": 200
+    },
+    {
+      "check": "Atualização de categoria",
+      "method": "PUT",
+      "route": "/categorias/103",
+      "status": 200
+    },
+    {
+      "check": "Cadastro de ocorrência",
+      "method": "POST",
+      "route": "/ocorrencias",
+      "status": 201
+    },
+    {
+      "check": "Listagem de ocorrências",
+      "method": "GET",
+      "route": "/ocorrencias",
+      "status": 200
+    },
+    {
+      "check": "Consulta de ocorrência por ID",
+      "method": "GET",
+      "route": "/ocorrencias/100",
+      "status": 200
+    },
+    {
+      "check": "Duplicidade ativa retorna 409",
+      "method": "POST",
+      "route": "/ocorrencias",
+      "status": 409
+    },
+    {
+      "check": "Bloqueio de salto de status",
+      "method": "PUT",
+      "route": "/ocorrencias/100",
+      "status": 409
+    },
+    {
+      "check": "Comentário pela rota aninhada",
+      "method": "POST",
+      "route": "/ocorrencias/100/atualizacoes",
+      "status": 201
+    },
+    {
+      "check": "Listagem de atualizações",
+      "method": "GET",
+      "route": "/atualizacoes",
+      "status": 200
+    },
+    {
+      "check": "Consulta de atualização",
+      "method": "GET",
+      "route": "/atualizacoes/100",
+      "status": 200
+    },
+    {
+      "check": "Atualização de comentário",
+      "method": "PUT",
+      "route": "/atualizacoes/100",
+      "status": 200
+    },
+    {
+      "check": "FK bloqueia exclusão de ocorrência com histórico",
+      "method": "DELETE",
+      "route": "/ocorrencias/100",
+      "status": 409
+    },
+    {
+      "check": "FK bloqueia exclusão de categoria em uso",
+      "method": "DELETE",
+      "route": "/categorias/103",
+      "status": 409
+    },
+    {
+      "check": "Transição para EM_ANALISE",
+      "method": "PUT",
+      "route": "/ocorrencias/100",
+      "status": 200
+    },
+    {
+      "check": "Transição para EM_ANDAMENTO",
+      "method": "PUT",
+      "route": "/ocorrencias/100",
+      "status": 200
+    },
+    {
+      "check": "Transição para RESOLVIDA",
+      "method": "PUT",
+      "route": "/ocorrencias/100",
+      "status": 200
+    },
+    {
+      "check": "Histórico transacional das mudanças de status",
+      "method": "GET",
+      "route": "/ocorrencias/100/atualizacoes",
+      "status": 200
+    },
+    {
+      "check": "Bean Validation retorna 400",
+      "method": "POST",
+      "route": "/ocorrencias",
+      "status": 400
+    },
+    {
+      "check": "ID ausente retorna 404",
+      "method": "GET",
+      "route": "/ocorrencias/999999999999",
+      "status": 404
+    },
+    {
+      "check": "Método não suportado retorna 405",
+      "method": "PATCH",
+      "route": "/categorias/1",
+      "status": 405
+    },
+    {
+      "check": "CORS autoriza origem local",
+      "method": "GET",
+      "route": "/categorias",
+      "status": 200
+    },
+    {
+      "check": "Consulta para limpeza dos dados temporários",
+      "method": "GET",
+      "route": "/ocorrencias/100/atualizacoes",
+      "status": 200
+    },
+    {
+      "check": "Remoção de atualização temporária",
+      "method": "DELETE",
+      "route": "/atualizacoes/100",
+      "status": 204
+    },
+    {
+      "check": "Remoção de atualização temporária",
+      "method": "DELETE",
+      "route": "/atualizacoes/101",
+      "status": 204
+    },
+    {
+      "check": "Remoção de atualização temporária",
+      "method": "DELETE",
+      "route": "/atualizacoes/102",
+      "status": 204
+    },
+    {
+      "check": "Remoção de atualização temporária",
+      "method": "DELETE",
+      "route": "/atualizacoes/103",
+      "status": 204
+    },
+    {
+      "check": "Remoção de ocorrência temporária",
+      "method": "DELETE",
+      "route": "/ocorrencias/100",
+      "status": 204
+    },
+    {
+      "check": "Confirmação de exclusão da ocorrência temporária",
+      "method": "GET",
+      "route": "/ocorrencias/100",
+      "status": 404
+    },
+    {
+      "check": "Remoção de categoria temporária",
+      "method": "DELETE",
+      "route": "/categorias/103",
+      "status": 204
+    }
+  ]
+}

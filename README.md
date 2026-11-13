@@ -12,6 +12,20 @@ API de zeladoria urbana com Spring Boot 3.5.7, Java 17 e Maven Wrapper. Três en
 
 Perfil padrão: `local`, com H2 em arquivo e três categorias iniciais. Porta padrão 8080, alterável por `PORT`. Para Oracle, configurar `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` e `CORS_ORIGINS`. Execute o SQL Oracle incluído antes de iniciar o perfil Oracle. Credenciais não devem ser incluídas no projeto. `.env.example` é uma referência e não é carregado automaticamente pelo Spring Boot.
 
+### Oracle FIAP validado
+
+A API foi testada em 13/11/2026 no Oracle FIAP 19c, com 32 verificações HTTP aprovadas. A interface React passou em sete verificações com a API conectada ao Oracle. Os dados temporários foram removidos após os testes.
+
+Conexão: `jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl` (SID `orcl`). Para um schema novo, use `database/00-api-oracle.sql`, que cria somente as três tabelas usadas pela API. O schema configurado nesta sessão já foi inicializado; não execute o DDL novamente sobre objetos existentes. Os outros scripts SQL são referências opcionais de um modelo ampliado, com objetos de mesmo nome, e não devem ser executados sobre o schema inicializado.
+
+Para iniciar sem gravar a senha em arquivos:
+
+```powershell
+.\iniciar-oracle.ps1 -Usuario SEU_USUARIO -Porta 8080
+```
+
+A senha é solicitada sem exibição no terminal e utilizada apenas no ambiente do processo. Evidências: `docs/VALIDACAO-ORACLE.md` e `docs/evidencias/validacao-oracle.json`. Publicação no Render e validação a partir da infraestrutura remota continuam pendentes.
+
 ## Endpoints
 
 CRUD completo: `/categorias`, `/ocorrencias`, `/atualizacoes`. Rotas de coleção: GET e POST. Rotas `/{id}`: GET, PUT e DELETE. Histórico: GET/POST `/ocorrencias/{id}/atualizacoes`. Saúde: GET `/actuator/health`.
@@ -40,7 +54,7 @@ Representante e contato principal: **Arthur Mendes Garcia — rm571703@fiap.com.
 - Documentação técnica: `docs/Java-Documentacao-Tecnica.pdf` no ZIP Java.
 - Deploy: Dockerfile multi-stage e instruções em `docs/DEPLOY.md` na entrega.
 
-Testes locais: 11 testes de integração com banco H2 aprovados. Oracle FIAP e Docker/Render ainda precisam de verificação no ambiente de entrega.
+Testes locais: 11 testes de integração com H2, 32 verificações HTTP com Oracle FIAP e sete verificações da interface integrada ao Oracle aprovados. A publicação no Render e sua conexão remota com Oracle continuam pendentes.
 
 Uso de IA: Codex/OpenAI para implementação, documentação e verificação local. Revisão e domínio técnico pelos alunos pendentes.
 

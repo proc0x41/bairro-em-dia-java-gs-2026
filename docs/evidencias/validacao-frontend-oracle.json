@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-13T16:05:07.388Z",
+  "frontend": "http://127.0.0.1:5173",
+  "api": "http://localhost:18081",
+  "database": "Oracle FIAP",
+  "localAssets": "Build Vite servido por interceptação local do navegador; API e banco reais.",
+  "passed": true,
+  "checks": [
+    "Formulário React cria ocorrência no Oracle com POST 201",
+    "Comentário enviado pela interface e persistido no Oracle",
+    "Mudança de status via interface confirmada na API Oracle",
+    "Rota dinâmica integrada ao Oracle sem overflow em 390x844",
+    "Rota dinâmica integrada ao Oracle sem overflow em 768x1024",
+    "Rota dinâmica integrada ao Oracle sem overflow em 1440x900",
+    "Nenhuma exceção JavaScript durante os fluxos"
+  ],
+  "errors": [],
+  "temporaryRecordsRemoved": true
+}

@@ -46,7 +46,7 @@ Na inspeção visual foi identificado texto inicial com acentuação incorreta n
 - Navegador de verificação: Microsoft Edge em modo headless, via Playwright.
 - API local verificada em `http://localhost:8081`, pois a porta 8080 já estava ocupada por outro serviço. CORS foi exercitado a partir de `http://127.0.0.1:5173`.
 - Persistência testada: H2 em memória nos testes Java e H2 em arquivo no fluxo do navegador.
-- **Não executado:** conexão Oracle FIAP, modelos nativos do Data Modeler, execução de imagem Docker, publicação no Render/Vercel, vídeos, leitor de tela e ensaio de carga/concorrência.
+- **Situação desta execução de 11/11:** Oracle e Docker ainda não haviam sido validados. A atualização de 13/11 abaixo registra sua execução. Render/Vercel, vídeos, leitor de tela e ensaio de carga/concorrência permanecem pendentes.
 - A regra de duplicidade é aplicada no serviço. Concorrência entre gravações simultâneas exige reforço antes de operação pública.
 - O fluxo de gestão é uma demonstração acadêmica aberta; autenticação e autorização são requisitos de evolução.
 
@@ -62,3 +62,7 @@ Os testes locais não comprovam disponibilidade remota nem execução de serviç
 - Engenharia: 37 páginas com backlog detalhado e seis telas/estados incorporados; ROI acadêmico conferido em 25% para as premissas do documento.
 - Arquivo de resultados: `docs/evidencias/validacao-atualizacao-grupo.json`.
 - Java não sofreu alteração de código nesta atualização; os onze testes anteriores continuam sendo a evidência técnica do backend.
+
+## Oracle FIAP e Docker — 13/11/2026
+
+Conexão JDBC validada com Oracle 19c. Schema mínimo da API criado sem alterar objetos de outros trabalhos. A API local passou em 32 verificações HTTP; a interface React, em sete verificações com persistência real no Oracle. A imagem Docker multi-stage foi compilada e passou em mais 32 verificações HTTP conectada ao Oracle. Todos os registros temporários foram removidos. Consulte VALIDACAO-ORACLE.md e os arquivos validacao-oracle.json, validacao-frontend-oracle.json e validacao-docker-oracle.json em evidencias. A execução local não comprova acesso ao Oracle a partir do Render.

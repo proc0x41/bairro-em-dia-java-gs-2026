@@ -9,15 +9,15 @@ Render e Vercel ainda não foram publicados.
 
 ## 1. Oracle
 
-Obtenha os dados de conexão do grupo diretamente da FIAP. No SQL Developer execute `database/01-schema-oracle.sql` em schema vazio; opcionalmente `02-dados-demonstrativos.sql`. A base de entrega usa seis tabelas e sequences com IDs novos a partir de 100. Os INSERTs usam IDs entre 1 e 18, sem colidir com as sequences.
+Conexão local validada em 13/11/2026: `jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl`. O schema mínimo da API já foi inicializado com três tabelas, sequences, índices e categorias. Em um schema novo, execute uma única vez `backend/database/00-api-oracle.sql`, ou `database/00-api-oracle.sql` no ZIP/repositório Java. A senha deve ser fornecida apenas no ambiente ou painel do Render.
 
-O `entrega-completa.sql` é uma alternativa de execução única que reúne schema, 60 INSERTs, dez consultas, UPDATE e DELETE. Não execute os dois caminhos no mesmo schema sem recriá-lo. O CRUD final apaga um anexo e deixa 59 registros.
+Os scripts do modelo ampliado são referências opcionais e criam objetos com nomes iguais aos do schema mínimo. Não os execute sobre a base já inicializada. Consulte `VALIDACAO-ORACLE.md` para resultados de CRUD, regras, interface e Docker com Oracle.
 
 ## 2. GitHub
 
 O PDF exige GitHub para Front End nas páginas 63 e 70. Apenas a pasta local `frontend/` corresponde ao repositório publicado, com `package.json` e `src/` na raiz. O Front End exige no mínimo 5 commits por integrante e 15 no total (25 ao considerar cinco integrantes).
 
-Java pede código em ZIP e API Docker no Render, sem exigir GitHub (páginas 47–55); seu repositório adicional facilita o deploy e foi solicitado pelo grupo. Engenharia pede PDF, backlog Jira/Trello e vídeo (página 91). Banco e Engenharia não têm repositório separado.
+Java pede código em ZIP e API Docker no Render, sem exigir GitHub (páginas 47–55); seu repositório adicional facilita o deploy e foi solicitado pelo grupo. Engenharia pede PDF, backlog Jira/Trello e vídeo (página 91), sem repositório separado. A entrega de Banco é mantida por outra pessoa; os scripts necessários ao Java permanecem em backend/database.
 
 ## 3. Render
 
