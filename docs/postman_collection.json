@@ -1,0 +1,343 @@
+{
+  "info": {
+    "name": "Bairro em Dia — CRUD e regras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Execução local padrão. URLs e IDs são variáveis. A ordem preserva as FKs na exclusão. Use banco de testes; operações escrevem e removem registros criados na coleção."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "categoriaId",
+      "value": ""
+    },
+    {
+      "key": "ocorrenciaId",
+      "value": ""
+    },
+    {
+      "key": "atualizacaoId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Criar categoria",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/categorias",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Categoria de teste Postman\",\n  \"descricao\": \"Categoria temporária para verificar CRUD.\",\n  \"prazoDias\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 + Location',()=>{pm.response.to.have.status(201);pm.expect(pm.response.headers.has('Location')).to.eql(true);});",
+              "if(pm.response.code===201) pm.collectionVariables.set('categoriaId',pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Listar categorias",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/categorias"
+      }
+    },
+    {
+      "name": "03 Buscar categoria",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/categorias/{{categoriaId}}"
+      }
+    },
+    {
+      "name": "04 Atualizar categoria",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/categorias/{{categoriaId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Categoria de teste Postman\",\n  \"descricao\": \"Categoria atualizada.\",\n  \"prazoDias\": 9\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 Criar ocorrência",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/ocorrencias",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Poste apagado próximo à escola\",\n  \"descricao\": \"A iluminação está apagada e prejudica a circulação à noite.\",\n  \"endereco\": \"Rua Exemplo de teste, 120\",\n  \"bairro\": \"Vila Mariana\",\n  \"categoriaId\": \"{{categoriaId}}\",\n  \"prioridade\": \"ALTA\",\n  \"status\": \"ABERTA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 + Location',()=>{pm.response.to.have.status(201);pm.expect(pm.response.headers.has('Location')).to.eql(true);});",
+              "if(pm.response.code===201) pm.collectionVariables.set('ocorrenciaId',pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 Listar ocorrências",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias"
+      }
+    },
+    {
+      "name": "07 Buscar ocorrência",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}"
+      }
+    },
+    {
+      "name": "08 Atualizar endereço sem mudar situação",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Poste apagado próximo à escola\",\n  \"descricao\": \"A iluminação está apagada e prejudica a circulação à noite.\",\n  \"endereco\": \"Rua Exemplo de teste, 121\",\n  \"bairro\": \"Vila Mariana\",\n  \"categoriaId\": \"{{categoriaId}}\",\n  \"prioridade\": \"ALTA\",\n  \"status\": \"ABERTA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "09 Criar atualização aninhada",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}/atualizacoes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"autor\": \"Teste Postman\",\n  \"mensagem\": \"Atualização temporária para demonstrar o histórico.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 + Location',()=>{pm.response.to.have.status(201);pm.expect(pm.response.headers.has('Location')).to.eql(true);});",
+              "if(pm.response.code===201) pm.collectionVariables.set('atualizacaoId',pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 Listar atualizações",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/atualizacoes"
+      }
+    },
+    {
+      "name": "11 Buscar atualização",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/atualizacoes/{{atualizacaoId}}"
+      }
+    },
+    {
+      "name": "12 Atualizar mensagem",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/atualizacoes/{{atualizacaoId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ocorrenciaId\": \"{{ocorrenciaId}}\",\n  \"autor\": \"Teste Postman\",\n  \"mensagem\": \"Mensagem corrigida no teste.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "13 Consultar histórico aninhado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}/atualizacoes"
+      }
+    },
+    {
+      "name": "14 Conflito 409 ao excluir pai com filho",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}"
+      }
+    },
+    {
+      "name": "15 Excluir atualização",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/atualizacoes/{{atualizacaoId}}"
+      }
+    },
+    {
+      "name": "16 Excluir ocorrência",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias/{{ocorrenciaId}}"
+      }
+    },
+    {
+      "name": "17 Excluir categoria",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/categorias/{{categoriaId}}"
+      }
+    },
+    {
+      "name": "18 Validacao 400",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/ocorrencias",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "19 Ausente 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/ocorrencias/9999999"
+      }
+    },
+    {
+      "name": "20 Metodo 405",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/categorias/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "21 Saúde",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/actuator/health"
+      }
+    }
+  ]
+}
