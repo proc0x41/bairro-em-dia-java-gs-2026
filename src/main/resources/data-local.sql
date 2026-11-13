@@ -1,0 +1,3 @@
+INSERT INTO tb_categoria (cd_categoria,nm_categoria,ds_categoria,nr_prazo_dias) SELECT 1,'Buraco na via','Buracos, desníveis e danos no pavimento.',15 FROM dual WHERE NOT EXISTS (SELECT 1 FROM tb_categoria WHERE cd_categoria=1);
+INSERT INTO tb_categoria (cd_categoria,nm_categoria,ds_categoria,nr_prazo_dias) SELECT 2,'Iluminação pública','Lâmpadas apagadas, piscando ou acesas durante o dia.',7 FROM dual WHERE NOT EXISTS (SELECT 1 FROM tb_categoria WHERE cd_categoria=2);
+INSERT INTO tb_categoria (cd_categoria,nm_categoria,ds_categoria,nr_prazo_dias) SELECT 3,'Descarte irregular','Resíduos e entulho descartados em espaços públicos.',5 FROM dual WHERE NOT EXISTS (SELECT 1 FROM tb_categoria WHERE cd_categoria=3);
