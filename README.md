@@ -30,7 +30,15 @@ A senha é solicitada sem exibição no terminal e utilizada apenas no ambiente 
 
 CRUD completo: `/categorias`, `/ocorrencias`, `/atualizacoes`. Rotas de coleção: GET e POST. Rotas `/{id}`: GET, PUT e DELETE. Histórico: GET/POST `/ocorrencias/{id}/atualizacoes`. Saúde: GET `/actuator/health`.
 
-Sucesso: 201 + Location, 200 e 204. Erros padronizados: 400, 404, 405, 409 e 500 genérico. CORS permite apenas origens configuradas.
+Sucesso: 201 + Location, 200 e 204. Erros padronizados: 400, 401, 403, 404, 405, 409 e 500 genérico. CORS permite apenas origens configuradas.
+
+## Acesso da equipe
+
+Exclusão, edição, mudança de situação e administração de categorias exigem `Authorization: Bearer ...`, validado pelo Spring Security. Consultas, registro de ocorrência e comentários continuam públicos. Sem chave ou com chave inválida, operações de gestão retornam 401 em JSON. As restrições de vínculos continuam retornando 409 após autenticação.
+
+No Render, configure `ADMIN_TOKEN` com uma chave aleatória de pelo menos 32 caracteres e faça novo deploy. Sem essa variável, a gestão permanece bloqueada. Não use a senha do Oracle nem coloque a chave em variáveis `VITE_*`. O Blueprint pode gerar a chave automaticamente. Na interface, informe-a em **Acesso da equipe → Entrar na gestão**. Ela fica apenas na memória da página.
+
+Os 21 testes de integração passaram com os filtros de segurança ativos. A regressão em navegador com Oracle passou em nove verificações. Detalhes e limites em `docs/SEGURANCA.md`.
 
 Repositório Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026
 

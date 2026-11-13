@@ -5,7 +5,7 @@ Os deploys serão realizados posteriormente pelo usuário. Os repositórios est�
 - Front End: https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026.
 - Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026, criado por solicitação do grupo.
 
-Render e Vercel ainda não foram publicados.
+Render e Vercel ainda não foram confirmados nos documentos locais. No serviço Java, configure também ADMIN_TOKEN para liberar a gestão autenticada; sem chave, edição e exclusão ficam bloqueadas.
 
 ## 1. Oracle
 
@@ -25,7 +25,7 @@ Java pede código em ZIP e API Docker no Render, sem exigir GitHub (páginas 47�
 
 1. Criar Web Service conectado a `proc0x41/bairro-em-dia-java-gs-2026`.
 2. Runtime **Docker**, Root Directory **`.`**, Dockerfile `./Dockerfile`, contexto `.`.
-3. Definir `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` e `CORS_ORIGINS` no painel.
+3. Definir `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, `CORS_ORIGINS` e `ADMIN_TOKEN` no painel. ADMIN_TOKEN deve ser uma chave aleatória de no mínimo 32 caracteres, distinta da senha Oracle.
 4. Health check: `/actuator/health`. O serviço respeita a variável `PORT`.
 5. Verificar Oracle e CRUD. O `render.yaml` da raiz do repositório Java descreve essa configuração.
 
@@ -41,7 +41,7 @@ docker push SEU_USUARIO/bairro-em-dia-api:1.0.0
 
 1. Criar Web Service no Render e selecionar **Existing Image**. Informar a URL da imagem publicada e credenciais de leitura se o registro for privado.
 2. A imagem usa o Dockerfile multi-stage entregue, com Maven na compilação e JRE 17 na execução. Não inclui credenciais Oracle.
-3. Configurar `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` e `CORS_ORIGINS`. Não colocar valores no Dockerfile ou no YAML.
+3. Configurar `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, `CORS_ORIGINS` e `ADMIN_TOKEN`. Não colocar valores no Dockerfile ou no YAML.
 4. O Render fornece `PORT`; a aplicação respeita esse valor.
 5. Health check: `/actuator/health`.
 6. Verificar conexão com Oracle e CRUD via Postman. Se o banco não aceitar conexões do Render, resolver o acesso com a FIAP; não substituir silenciosamente o Oracle por H2 na entrega.

@@ -18,11 +18,25 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /** Testa HTTP -> validação -> serviço -> DAO -> banco H2, sem mock de persistência. */
-@SpringBootTest(properties = {"spring.datasource.url=jdbc:h2:mem:teste;MODE=Oracle;DB_CLOSE_DELAY=-1"})
+@SpringBootTest(properties = {"spring.datasource.url=jdbc:h2:mem:teste;MODE=Oracle;DB_CLOSE_DELAY=-1", "app.admin.token=" + ApiIntegrationTest.ADMIN_TOKEN})
 @ActiveProfiles("local")
 @AutoConfigureMockMvc
 @Transactional
 class ApiIntegrationTest {
+    static final String ADMIN_TOKEN = "chave-exclusiva-dos-testes-de-integracao-0001";
+    // These tests exercise business flows as the team; SecurityIntegrationTest covers public access.
+    private static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder post(String path, Object... args) {
+        return org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post(path, args).header("Authorization", "Bearer " + ADMIN_TOKEN);
+    }
+    private static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder put(String path, Object... args) {
+        return org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(path, args).header("Authorization", "Bearer " + ADMIN_TOKEN);
+    }
+    private static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder delete(String path, Object... args) {
+        return org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete(path, args).header("Authorization", "Bearer " + ADMIN_TOKEN);
+    }
+    private static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder patch(String path, Object... args) {
+        return org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch(path, args).header("Authorization", "Bearer " + ADMIN_TOKEN);
+    }
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper json;
 

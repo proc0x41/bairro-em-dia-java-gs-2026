@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-13T16:39:46.173Z",
+  "passed": true,
+  "database": "Oracle FIAP",
+  "assets": "Build Vite servido no navegador isolado; chamadas reais à API.",
+  "checks": [
+    "Chamadas diretas sem chave não excluem nem alteram a denúncia no Oracle",
+    "Visitante não vê controles de exclusão nem de alteração de situação",
+    "Morador continua podendo comentar sem autenticação",
+    "Chave inválida não libera os controles de gestão",
+    "Chave válida libera gestão sem gravar segredo no armazenamento, cookies ou HTML",
+    "Equipe autenticada altera situação com persistência no Oracle",
+    "Sair da gestão remove os controles privilegiados",
+    "Recarregar a página exige nova autenticação da equipe",
+    "Somente equipe autenticada consegue excluir pela interface"
+  ],
+  "javascriptErrors": []
+}

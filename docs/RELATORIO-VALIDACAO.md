@@ -48,7 +48,7 @@ Na inspeção visual foi identificado texto inicial com acentuação incorreta n
 - Persistência testada: H2 em memória nos testes Java e H2 em arquivo no fluxo do navegador.
 - **Situação desta execução de 11/11:** Oracle e Docker ainda não haviam sido validados. A atualização de 13/11 abaixo registra sua execução. Render/Vercel, vídeos, leitor de tela e ensaio de carga/concorrência permanecem pendentes.
 - A regra de duplicidade é aplicada no serviço. Concorrência entre gravações simultâneas exige reforço antes de operação pública.
-- O fluxo de gestão é uma demonstração acadêmica aberta; autenticação e autorização são requisitos de evolução.
+- A versão inicial tinha gestão aberta. A correção de 13/11/2026 restringe a gestão por autenticação Bearer na API; os resultados atualizados estão em SEGURANCA.md.
 
 Os testes locais não comprovam disponibilidade remota nem execução de serviços pela prefeitura.
 
@@ -66,3 +66,7 @@ Os testes locais não comprovam disponibilidade remota nem execução de serviç
 ## Oracle FIAP e Docker — 13/11/2026
 
 Conexão JDBC validada com Oracle 19c. Schema mínimo da API criado sem alterar objetos de outros trabalhos. A API local passou em 32 verificações HTTP; a interface React, em sete verificações com persistência real no Oracle. A imagem Docker multi-stage foi compilada e passou em mais 32 verificações HTTP conectada ao Oracle. Todos os registros temporários foram removidos. Consulte VALIDACAO-ORACLE.md e os arquivos validacao-oracle.json, validacao-frontend-oracle.json e validacao-docker-oracle.json em evidencias. A execução local não comprova acesso ao Oracle a partir do Render.
+
+## Correção de controle de acesso — 13/11/2026
+
+21 testes de integração aprovados com os filtros de segurança ativos (11 regras da API, nove permissões e um bloqueio sem chave configurada). Nove verificações em navegador integrado ao Oracle confirmaram que visitantes não excluem nem alteram registros, enquanto equipe autenticada pode gerir. Cadastros e comentários públicos foram preservados. Nenhuma exceção JavaScript foi observada e os registros temporários foram removidos. Evidências em SEGURANCA.md e evidencias/validacao-seguranca.json.

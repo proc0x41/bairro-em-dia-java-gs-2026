@@ -9,6 +9,6 @@ public class ApiConfig implements WebMvcConfigurer {
     @Value("${app.cors.origins}") private String[] origins;
     @Bean public ModelMapper modelMapper() { ModelMapper m=new ModelMapper(); m.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT); return m; }
     @Override public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins(origins).allowedMethods("GET","POST","PUT","DELETE","OPTIONS").allowedHeaders("Content-Type").exposedHeaders("Location");
+        registry.addMapping("/**").allowedOrigins(origins).allowedMethods("GET","POST","PUT","DELETE","OPTIONS").allowedHeaders("Content-Type","Authorization").exposedHeaders("Location");
     }
 }
