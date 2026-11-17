@@ -1,3 +1,5 @@
+> Registro histórico de 13/11/2026. A conferência atual de 17/11/2026, incluindo URLs, está em CONFERENCIA-ENTREGA.txt. As referências a publicação pendente abaixo descrevem a situação naquela data.
+
 # Validação da API no Oracle FIAP — 13/11/2026
 
 Conexão JDBC autenticada no Oracle Database 19c em `oracle.fiap.com.br`, porta 1521, SID `orcl`. A senha foi usada apenas nas variáveis de ambiente dos processos de validação; não foi escrita nos fontes, documentos ou pacotes.
@@ -27,4 +29,4 @@ O script reproduzível é `backend/database/00-api-oracle.sql`, ou `database/00-
 
 A API de validação foi executada em `http://localhost:18081`, com a senha no ambiente do processo. O helper `backend/iniciar-oracle.ps1` permite iniciar novamente solicitando a senha de forma oculta. O arquivo `.env.example` contém somente exemplos e não é carregado pelo Spring Boot.
 
-Ainda é necessário publicar no Render, configurar suas variáveis de ambiente e confirmar que o Oracle FIAP aceita conexões originadas do serviço remoto. A validação local não comprova esse acesso nem substitui os vídeos e URLs exigidos para entrega.
+Ainda é necessário publicar no Render, configurar suas variáveis de ambiente e confirmar que o Oracle FIAP aceita conexões originadas do serviço remoto. A validação local não comprova esse acesso nem comprova a integração publicada.

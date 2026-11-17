@@ -1,52 +1,12 @@
 # Bairro em Dia — Domain Driven Design Using Java
 
-API de zeladoria urbana com Spring Boot 3.5.7, Java 17 e Maven Wrapper. Três entidades: Categoria, Ocorrencia e Atualizacao. DAOs usam DataSource via construtor e PreparedStatement; DTOs com Bean Validation são convertidos por ModelMapper. Não utiliza JPA, Hibernate ou Spring Data.
+API CitizenTech para moradores registrarem e acompanharem buracos, falhas de iluminação pública e descarte irregular. Java 17, Spring Boot 3.5.7, Maven Wrapper 3.9.11, Oracle JDBC, ModelMapper e Bean Validation.
 
-## Executar e testar
+Três entidades: Categoria, Ocorrencia e Atualizacao; relações 1:N, CRUD completo e rotas aninhadas. Persistência com DAO, DataSource por construtor e PreparedStatement.
 
-```powershell
-.\mvnw.cmd spring-boot:run
-.\mvnw.cmd test
-.\mvnw.cmd clean package
-```
+## Integrantes e contato
 
-Perfil padrão: `local`, com H2 em arquivo e três categorias iniciais. Porta padrão 8080, alterável por `PORT`. Para Oracle, configurar `SPRING_PROFILES_ACTIVE=oracle`, `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` e `CORS_ORIGINS`. Execute o SQL Oracle incluído antes de iniciar o perfil Oracle. Credenciais não devem ser incluídas no projeto. `.env.example` é uma referência e não é carregado automaticamente pelo Spring Boot.
-
-### Oracle FIAP validado
-
-A API foi testada em 13/11/2026 no Oracle FIAP 19c, com 32 verificações HTTP aprovadas. A interface React passou em sete verificações com a API conectada ao Oracle. Os dados temporários foram removidos após os testes.
-
-Conexão: `jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl` (SID `orcl`). Para um schema novo, use `database/00-api-oracle.sql`, que cria somente as três tabelas usadas pela API. O schema configurado nesta sessão já foi inicializado; não execute o DDL novamente sobre objetos existentes. Os outros scripts SQL são referências opcionais de um modelo ampliado, com objetos de mesmo nome, e não devem ser executados sobre o schema inicializado.
-
-Para iniciar sem gravar a senha em arquivos:
-
-```powershell
-.\iniciar-oracle.ps1 -Usuario SEU_USUARIO -Porta 8080
-```
-
-A senha é solicitada sem exibição no terminal e utilizada apenas no ambiente do processo. Evidências: `docs/VALIDACAO-ORACLE.md` e `docs/evidencias/validacao-oracle.json`. Publicação no Render e validação a partir da infraestrutura remota continuam pendentes.
-
-## Endpoints
-
-CRUD completo: `/categorias`, `/ocorrencias`, `/atualizacoes`. Rotas de coleção: GET e POST. Rotas `/{id}`: GET, PUT e DELETE. Histórico: GET/POST `/ocorrencias/{id}/atualizacoes`. Saúde: GET `/actuator/health`.
-
-Sucesso: 201 + Location, 200 e 204. Erros padronizados: 400, 401, 403, 404, 405, 409 e 500 genérico. CORS permite apenas origens configuradas.
-
-## Acesso da equipe
-
-Exclusão, edição, mudança de situação e administração de categorias exigem `Authorization: Bearer ...`, validado pelo Spring Security. Consultas, registro de ocorrência e comentários continuam públicos. Sem chave ou com chave inválida, operações de gestão retornam 401 em JSON. As restrições de vínculos continuam retornando 409 após autenticação.
-
-No Render, configure `ADMIN_TOKEN` com uma chave aleatória de pelo menos 32 caracteres e faça novo deploy. Sem essa variável, a gestão permanece bloqueada. Não use a senha do Oracle nem coloque a chave em variáveis `VITE_*`. O Blueprint pode gerar a chave automaticamente. Na interface, informe-a em **Acesso da equipe → Entrar na gestão**. Ela fica apenas na memória da página.
-
-Os 21 testes de integração passaram com os filtros de segurança ativos. A regressão em navegador com Oracle passou em nove verificações. Detalhes e limites em `docs/SEGURANCA.md`.
-
-Repositório Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026
-
-Repositório do Front End integrado: https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026
-
-## Entrega e links
-
-| Nome completo | RM | Turma | E-mail institucional |
+| Nome | RM | Turma | E-mail |
 | --- | --- | --- | --- |
 | Vinicius de Oliveira | 561862 | 1TDSPW | rm561862@fiap.com.br |
 | Robison Custodio Junior | 572866 | 1TDSPW | rm572866@fiap.com.br |
@@ -54,20 +14,60 @@ Repositório do Front End integrado: https://github.com/proc0x41/bairro-em-dia-f
 | Thiago Shimizu Sodré dos Santos | 572867 | 1TDSPW | rm572867@fiap.com.br |
 | Arthur Mendes Garcia | 571703 | 1TDSPW | rm571703@fiap.com.br |
 
-Representante e contato principal: **Arthur Mendes Garcia — rm571703@fiap.com.br**.
+Representante: Arthur Mendes Garcia — rm571703@fiap.com.br.
 
-- API Render: **PENDENTE**, publicação ainda não realizada.
-- Vídeo YouTube não listado, até 5 minutos: **PENDENTE**, exige gravação real do grupo.
-- SQL de tabelas e sequences: incluído na pasta `database` do ZIP Java.
-- Documentação técnica: `docs/Java-Documentacao-Tecnica.pdf` no ZIP Java.
-- Deploy: Dockerfile multi-stage e instruções em `docs/DEPLOY.md` na entrega.
+## Links de entrega
 
-Testes locais: 11 testes de integração com H2, 32 verificações HTTP com Oracle FIAP e sete verificações da interface integrada ao Oracle aprovados. A publicação no Render e sua conexão remota com Oracle continuam pendentes.
+- Front End na Vercel: https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app
+- API no Render: https://bairro-em-dia-java-gs-2026.onrender.com
+- GitHub Front End: https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026
+- GitHub Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026
 
-Uso de IA: Codex/OpenAI para implementação, documentação e verificação local. Revisão e domínio técnico pelos alunos pendentes.
+URLs de publicação atualizadas em 17/11/2026. O resultado dos testes de disponibilidade está no relatório de conferência.
 
-## Publicação no Render
+## Executar a partir da raiz deste ZIP
 
-O repositório Java foi criado separadamente por solicitação do grupo. No Render, conecte este repositório, selecione runtime Docker e Root Directory `.`. O Dockerfile e o `render.yaml` estão na raiz. Configure Oracle e CORS por variáveis de ambiente; nunca inclua credenciais no código.
+Requisito: JDK 17 e acesso à internet para as dependências na primeira execução.
 
-Como alternativa sem conexão Git, compile uma imagem local com o Dockerfile, envie ao seu registro e use Existing Image no Render. O guia `docs/DEPLOY.md` descreve as opções. O PDF continua exigindo o ZIP Java, a API publicada, a documentação e o vídeo.
+```powershell
+.\mvnw.cmd spring-boot:run
+.\mvnw.cmd test
+.\mvnw.cmd clean package
+```
+
+Linux/macOS: dê permissão de execução a mvnw e use ./mvnw. O perfil padrão local usa H2 em arquivo e três categorias iniciais. Porta 8080, alterável por PORT. O banco local é uma facilidade de desenvolvimento; o banco exigido na entrega é Oracle FIAP.
+
+Para Oracle, execute database/00-api-oracle.sql apenas em schema novo, sem os objetos correspondentes. Os demais scripts são alternativas de modelo ampliado e não devem ser executados em sequência sobre o schema mínimo. Configure SPRING_PROFILES_ACTIVE=oracle, DB_URL, DB_USERNAME, DB_PASSWORD e CORS_ORIGINS no ambiente; o Spring não lê .env automaticamente. O arquivo .env.example lista os nomes. Credenciais não acompanham o ZIP.
+
+Também é possível usar .\iniciar-oracle.ps1 -Usuario SEU_USUARIO -Porta 8080, que solicita a senha sem exibi-la. Não execute novamente o DDL em um schema já inicializado.
+
+## Acesso da equipe
+
+Configure ADMIN_TOKEN no backend com uma chave aleatória de pelo menos 32 caracteres. Consultar, registrar e comentar são públicos; editar, excluir e administrar categorias exige Bearer. Sem chave configurada, a gestão responde 401. Na interface, use Acesso da equipe → Entrar na gestão. A chave fica apenas na memória da página. Não use a senha do Oracle como chave nem configure segredos em variáveis VITE_*. Veja ACESSO-AVALIACAO.txt.
+
+## Endpoints e regras
+
+CRUD completo em /categorias, /ocorrencias e /atualizacoes: GET/POST na coleção; GET/PUT/DELETE em /{id}. GET e POST em /ocorrencias/{id}/atualizacoes. Saúde: /actuator/health.
+
+Respostas: 201 com Location, 200, 204; erros JSON 400, 401, 403, 404, 405, 409, 415 e 500 genérico. Nova ocorrência começa ABERTA. Fluxo obrigatório: ABERTA → EM_ANALISE → EM_ANDAMENTO → RESOLVIDA. Duplicidade ativa por categoria/endereço/bairro gera 409. Alteração de status grava histórico na mesma transação; FKs impedem exclusão de pais com filhos.
+
+## Estrutura e documentação
+
+- src/main/java: model, dao, dto, service, controller, exception, handler e config.
+- src/test/java: testes de integração HTTP, JDBC, regras e segurança.
+- database/00-api-oracle.sql: tabelas, sequences, FKs e categorias iniciais.
+- docs/Java-Documentacao-Tecnica.pdf: arquitetura, diagramas, endpoints, exemplos, validação e deploy.
+- docs/postman_collection.json: coleção de avaliação; configure baseUrl e adminToken.
+- Dockerfile e render.yaml: implantação Docker no Render com raiz do repositório em ponto (.).
+
+## Publicação e integração
+
+A API utiliza a variável PORT do Render e o health check /actuator/health. Configure Oracle, CORS_ORIGINS com a origem https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app e ADMIN_TOKEN no serviço. O Front recebe VITE_API_URL=https://bairro-em-dia-java-gs-2026.onrender.com antes do build. Detalhes em docs/DEPLOY.md.
+
+## Verificação
+
+Conferência de 17/11/2026: 21 testes de integração Java aprovados (11 de API, 9 de segurança e 1 de gestão desabilitada); TypeScript aprovado com tsc -b --force. A tentativa de build Vite e de navegador nesta sessão encontrou bloqueio de processo/permissão (spawn EPERM). As evidências anteriores de 13/11/2026 registram build e testes de navegador/Oracle; elas não são apresentadas como uma nova execução. Veja docs/CONFERENCIA-ENTREGA.txt e docs/evidencias/validacao-remota-20261117.json para os resultados e limites da verificação remota.
+
+## Uso de IA
+
+Codex/OpenAI foi usado na implementação, documentação e verificações. O grupo deve compreender e revisar a entrega e demonstrar domínio na apresentação presencial. As evidências não comprovam revisão humana ou participação individual. Consulte docs/USO-IA.md.

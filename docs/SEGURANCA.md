@@ -1,3 +1,5 @@
+> Registro histórico de 13/11/2026. A conferência atual de 17/11/2026, incluindo URLs, está em CONFERENCIA-ENTREGA.txt. As referências a publicação pendente abaixo descrevem a situação naquela data.
+
 # Controle de acesso à gestão
 
 ## Permissões

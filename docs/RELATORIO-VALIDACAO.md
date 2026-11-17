@@ -1,3 +1,5 @@
+> Registro histórico de 13/11/2026. A conferência atual de 17/11/2026, incluindo URLs, está em CONFERENCIA-ENTREGA.txt. As referências a publicação pendente abaixo descrevem a situação naquela data.
+
 # Validação local — 11/11/2026
 
 ## Resultados executados
@@ -46,7 +48,7 @@ Na inspeção visual foi identificado texto inicial com acentuação incorreta n
 - Navegador de verificação: Microsoft Edge em modo headless, via Playwright.
 - API local verificada em `http://localhost:8081`, pois a porta 8080 já estava ocupada por outro serviço. CORS foi exercitado a partir de `http://127.0.0.1:5173`.
 - Persistência testada: H2 em memória nos testes Java e H2 em arquivo no fluxo do navegador.
-- **Situação desta execução de 11/11:** Oracle e Docker ainda não haviam sido validados. A atualização de 13/11 abaixo registra sua execução. Render/Vercel, vídeos, leitor de tela e ensaio de carga/concorrência permanecem pendentes.
+- **Situação desta execução de 11/11:** Oracle e Docker ainda não haviam sido validados. A atualização de 13/11 abaixo registra sua execução. Render/Vercel, leitor de tela e ensaio de carga/concorrência permanecem pendentes.
 - A regra de duplicidade é aplicada no serviço. Concorrência entre gravações simultâneas exige reforço antes de operação pública.
 - A versão inicial tinha gestão aberta. A correção de 13/11/2026 restringe a gestão por autenticação Bearer na API; os resultados atualizados estão em SEGURANCA.md.
 

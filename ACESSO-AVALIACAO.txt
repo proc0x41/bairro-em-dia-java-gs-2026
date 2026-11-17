@@ -1,0 +1,14 @@
+ACESSO PARA AVALIAÇÃO
+
+As consultas, o cadastro de ocorrências e os comentários são públicos.
+Edição, exclusão e administração de categorias exigem Authorization: Bearer.
+Na interface, use Acesso da equipe > Entrar na gestão.
+
+Para execução local, gere sua própria chave temporária de pelo menos 32
+caracteres e defina ADMIN_TOKEN no ambiente do backend antes de iniciá-lo.
+Informe a mesma chave na interface ou na variável adminToken do Postman.
+Sem ADMIN_TOKEN, a gestão permanece bloqueada e responde 401.
+
+Para avaliar a gestão remota, solicite a chave ao representante pelo canal
+privado da disciplina. Este pacote não contém chaves nem senhas do Oracle.
+Contato: rm571703@fiap.com.br.

@@ -1,0 +1,139 @@
+{
+  "checkedAt": "2026-11-17T14:03:36.106Z",
+  "frontend": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app",
+  "api": "https://bairro-em-dia-java-gs-2026.onrender.com",
+  "checks": [
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 84,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/faq",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 35,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/ocorrencias",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 36,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/contato",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 39,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/integrantes",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 42,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/assets/index-DIw7nnMY.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "durationMs": 45,
+      "bytes": 26685
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/sobre",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 45,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/registrar",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 44,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/ocorrencias/999999999",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "durationMs": 50,
+      "bytes": 650
+    },
+    {
+      "url": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app/assets/index-DnDsGjhj.js",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "durationMs": 58,
+      "bytes": 314986,
+      "referencesCorrectApi": true,
+      "referencesLocalApi": false
+    },
+    {
+      "url": "https://bairro-em-dia-java-gs-2026.onrender.com/ocorrencias",
+      "method": "OPTIONS",
+      "status": 200,
+      "contentType": null,
+      "durationMs": 912,
+      "bytes": 0,
+      "allowOrigin": "https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app",
+      "allowMethods": "GET,POST,PUT,DELETE,OPTIONS"
+    },
+    {
+      "url": "https://bairro-em-dia-java-gs-2026.onrender.com/categorias",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json",
+      "durationMs": 10441,
+      "bytes": 344
+    },
+    {
+      "url": "https://bairro-em-dia-java-gs-2026.onrender.com/ocorrencias/999999999",
+      "method": "GET",
+      "status": 404,
+      "contentType": "application/json",
+      "durationMs": 10500,
+      "bytes": 146
+    },
+    {
+      "url": "https://bairro-em-dia-java-gs-2026.onrender.com/ocorrencias",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json",
+      "durationMs": 10709,
+      "bytes": 252
+    }
+  ],
+  "limits": [
+    "Leituras HTTP e preflight somente; não foram criados dados no serviço remoto.",
+    "Resposta HTML 200 comprova entrega da SPA, não execução visual ou integração ponta a ponta.",
+    "Banco Oracle e imagem Docker do Render não são comprovados apenas pela resposta pública."
+  ],
+  "healthCheck": {
+    "status": 200,
+    "body": {
+      "status": "UP",
+      "groups": [
+        "liveness",
+        "readiness"
+      ]
+    },
+    "observation": "Primeira tentativa excedeu 55 segundos; segunda tentativa respondeu HTTP 200. Resultado observado separadamente nesta sessão."
+  }
+}

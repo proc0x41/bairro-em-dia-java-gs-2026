@@ -1,0 +1,103 @@
+CONFERÊNCIA DE JAVA E FRONT — BAIRRO EM DIA — 17/11/2026
+
+RESULTADO
+Os pacotes Java e Front foram preparados para envio na pasta ENTREGAS_PRONTAS.
+O código cobre os principais requisitos técnicos verificados. O escopo e os
+limites desta conferência estão detalhados abaixo.
+
+FONTE E ESCOPO
+PDF: 1TDS Fevereiro - Global Solution 2026-2.pdf.
+Java: páginas 47–56. Front: páginas 58–74.
+Somente Java e Front foram preparados nesta revisão. Engenharia, Banco,
+Python e Inteligência Artificial não foram reavaliados ou empacotados aqui.
+
+ARQUIVOS PARA O PORTAL
+- Java-BairroEmDia.zip: enviar na disciplina Domain Driven Design Using Java.
+- FrontEnd-BairroEmDia.zip: enviar na disciplina Front-End Design Engineering.
+O representante deve enviar um ZIP por disciplina no Portal do Aluno.
+O relatório, o manifesto e os hashes externos são apoio; não substituem os ZIPs.
+Os dois ZIPs incluem esta conferência, README, identificação e documentação.
+Prazo indicado no enunciado: 19/11/2026, às 23h55.
+
+LINKS
+Front: https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app
+API: https://bairro-em-dia-java-gs-2026.onrender.com
+GitHub Front: https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026
+GitHub Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026
+
+JAVA — CONFERÊNCIA COM O ENUNCIADO
+[Atendido no código; págs. 47–49] Domínio CitizenTech com Categoria, Ocorrencia
+e Atualizacao; relações Categoria 1:N Ocorrencia e Ocorrencia 1:N Atualizacao.
+Evidência: model/, DAO, FKs e diagramas do PDF técnico.
+[Atendido no código; pág. 49] DAO por entidade; DataSource no construtor;
+PreparedStatement; nenhuma dependência JPA, Hibernate ou Spring Data no pom.
+[Atendido localmente; págs. 49–51] CRUD das três entidades e GET/POST aninhados.
+DTOs de entrada/saída, ModelMapper, @Valid, Bean Validation e regras próprias.
+Status 201 + Location, 200, 204, 400, 404, 405 e 409 cobertos pelos testes.
+[Atendido no código/testes; pág. 50] Handler global com JSON de erro e mensagens
+genéricas para falhas inesperadas; sem SQL/stack trace. CORS configurado.
+[Atendido; pág. 54] Dockerfile multi-stage, SQL Oracle, código completo, Maven
+Wrapper, README na raiz e PDF técnico atualizado com nove páginas.
+[Verificado parcialmente; págs. 47–50] API no Render responde. Há configuração
+Oracle e evidências locais anteriores de 13/11/2026. Não foi inspecionado o
+painel Render para certificar perfil, credenciais ou imagem efetivamente usada.
+
+FRONT — CONFERÊNCIA COM O ENUNCIADO
+[Atendido no código; págs. 58–60 e 64] React, Vite, TypeScript e Tailwind;
+pastas de componentes, páginas, serviços e tipos. Fetch API, sem Axios.
+[Atendido no código; págs. 61 e 65] Cinco páginas institucionais, consulta,
+cadastro, detalhe com parâmetro e fallback; componentes reutilizados.
+[Evidência anterior; págs. 61 e 66] Relatórios de 13/11/2026 registram layout
+em 390x844, 768x1024 e 1440x900, sem overflow nas rotas verificadas.
+A inspeção visual não foi repetida nesta sessão, por restrição do navegador.
+[Atendido no código e evidências locais; págs. 62, 67–68] GET, POST, PUT e
+DELETE reais, contratos tipados, formulários validados, loading, erro e vazio.
+POST/PUT/DELETE remotos não foram executados nesta sessão.
+[Verificado por HTTP; pág. 69] Vercel entrega a SPA e assets; rotas diretas
+retornam HTML 200. Bundle publicado aponta para a API Render correta.
+[Contagem atendida; págs. 63 e 70] GitHub público confirmado, 28 commits:
+Arthur 8; Thiago 5; Lucas 5; Robison 5; Vinicius 5. Metadados não certificam
+participação real. A documentação local revisada ainda não foi enviada ao GitHub.
+[Atendido quanto ao pacote; págs. 63 e 74] ZIP com código, configurações,
+assets e README. Sem node_modules; limite de 50 MB validado pelo empacotador.
+
+TESTES EXECUTADOS EM 17/11/2026
+- Java: .\mvnw.cmd -B -o package aprovado; 21 testes, zero falhas/erros/skips.
+  11 de API, nove de segurança e um de gestão desabilitada, usando H2 real.
+- Front: TypeScript aprovado com tsc -b --force.
+- npm run build não pôde completar: spawn EPERM no processo esbuild.
+  O navegador também foi impedido pelo ambiente. Esses resultados não são
+  apresentados como build/inspeção visual aprovados nem como defeito provado do código.
+- PDFs lidos com extrator; links confirmados. Capa e
+  diagrama Java renderizados e inspecionados; Java 9 páginas, Front 4 páginas.
+
+VERIFICAÇÃO DOS SERVIÇOS PUBLICADOS
+- API: /actuator/health respondeu 200, status UP, na segunda tentativa;
+  a primeira ultrapassou 55 segundos. Isso não prova a causa da demora.
+- GET /categorias e /ocorrencias: 200 application/json.
+- GET /ocorrencias/999999999: 404 application/json.
+- Preflight OPTIONS de POST /ocorrencias: 200 e Access-Control-Allow-Origin
+  igual à URL Vercel; métodos GET, POST, PUT, DELETE e OPTIONS permitidos.
+- Front: oito rotas (incluindo detalhe dinâmico) e assets JS/CSS com HTTP 200.
+  O JS referencia a API Render, sem localhost:8080 incorporado.
+- Nenhum registro foi criado ou alterado no serviço remoto. Respostas HTTP
+  não certificam execução visual, escrita remota ou persistência Oracle remota.
+Evidências detalhadas: docs/evidencias/validacao-remota-20261117.json e
+docs/evidencias/conferencia-local-20261117.json, dentro de ambos os ZIPs.
+
+ACESSO PARA CORREÇÃO
+Consultas, cadastro e comentários são públicos. Gestão exige ADMIN_TOKEN.
+O avaliador pode definir uma chave própria ao executar Java localmente.
+Para gestão remota, solicitar a chave ao representante por canal privado.
+O pacote não contém senhas do Oracle nem o arquivo privado de acesso.
+
+AJUSTES DESTA PREPARAÇÃO
+READMEs e identificações atualizados com equipe, contatos e URLs fornecidas;
+PDFs técnicos atualizados; .env.example do Front aponta para Render;
+instruções de avaliação incluídas; estado antigo de pasta vazia substituído.
+Nenhuma alteração foi enviada ao GitHub,
+Render, Vercel ou Portal. Código de aplicação não foi modificado nesta revisão.
+
+APRESENTAÇÃO
+As apresentações presenciais seguem previstas no enunciado (Java pág. 56;
+Front pág. 71). Não são substituídas pelos documentos. Revisão e domínio técnico da equipe não certificados.

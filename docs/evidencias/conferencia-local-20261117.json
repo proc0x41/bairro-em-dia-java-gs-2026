@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-17T14:05:42.130Z",
+  "java": {
+    "command": ".\\mvnw.cmd -B -o package",
+    "passed": true,
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "database": "H2 em memória",
+    "suites": [
+      {
+        "name": "ApiIntegrationTest",
+        "tests": 11
+      },
+      {
+        "name": "SecurityIntegrationTest",
+        "tests": 9
+      },
+      {
+        "name": "GestaoDesabilitadaTest",
+        "tests": 1
+      }
+    ]
+  },
+  "frontend": {
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc -b --force",
+      "passed": true
+    },
+    "build": {
+      "command": "npm.cmd run build",
+      "passed": false,
+      "classification": "Ambiente",
+      "error": "spawn EPERM ao iniciar esbuild"
+    },
+    "browser": {
+      "passed": false,
+      "classification": "Ambiente",
+      "error": "spawn EPERM e acesso negado ao perfil do navegador"
+    }
+  },
+  "github": {
+    "url": "https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026",
+    "public": true,
+    "head": "85cfe985ed6f006f07dbf16d0ab6cd8695c7c787",
+    "commits": 28,
+    "authors": {
+      "Arthur Mendes Garcia": 8,
+      "Thiago Shimizu Sodré dos Santos": 5,
+      "Lucas Fernando Silva": 5,
+      "Robison Custodio Junior": 5,
+      "Vinicius de Oliveira": 5
+    },
+    "note": "Contagem de metadados; não comprova autoria ou colaboração efetiva. Documentação local revisada não foi enviada ao GitHub."
+  },
+  "pdfs": {
+    "java": 9,
+    "frontend": 4,
+    "textExtraction": "OK",
+    "sampleVisualInspection": "Capa e diagrama Java aprovados"
+  },
+  "limits": [
+    "Oracle e Docker não foram reexecutados nesta sessão. Evidências anteriores de 13/11/2026 preservadas."
+  ]
+}

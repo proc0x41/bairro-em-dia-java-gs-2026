@@ -1,3 +1,5 @@
 # Uso de IA — Java
 
-Codex/OpenAI foi utilizado para implementar a API Spring Boot/JDBC, DTOs, DAOs, validações, regras do domínio, testes, SQL e documentação. O grupo deve revisar e compreender o código antes da entrega. Onze testes de integração foram executados com H2. Oracle FIAP foi validado em 13/11/2026: 32 verificações HTTP da API, sete da interface e 32 da API Docker conectada ao Oracle. A publicação remota permanece pendente. Credenciais Oracle e tokens não integram o repositório. Os dados de demonstração são sintéticos.
+Codex/OpenAI foi utilizado como ferramenta de apoio ao desenvolvimento do projeto. Auxiliou na elaboração e revisão de trechos de código da API Spring Boot/JDBC, incluindo DTOs, DAOs, validações e regras de negócio, e ajudou na preparação de testes, scripts SQL e documentação.
+
+A ferramenta também auxiliou na análise de erros e na conferência dos requisitos técnicos. Os resultados e limites das verificações estão registrados em CONFERENCIA-ENTREGA.txt e na pasta evidencias. Os dados de demonstração são sintéticos; credenciais Oracle e tokens não integram o repositório.

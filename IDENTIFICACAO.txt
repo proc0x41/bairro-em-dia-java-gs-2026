@@ -1,34 +1,12 @@
-DOMAIN DRIVEN DESIGN USING JAVA — Global Solution FIAP 2026/2
-Solução: Bairro em Dia
+Bairro em Dia — Global Solution FIAP 2026/2
 Turma: 1TDSPW
 
-Vinicius de Oliveira
-RM: 561862
-E-mail: rm561862@fiap.com.br
-Turma: 1TDSPW
-
-Robison Custodio Junior
-RM: 572866
-E-mail: rm572866@fiap.com.br
-Turma: 1TDSPW
-
-Lucas Fernando Silva
-RM: 564848
-E-mail: rm564848@fiap.com.br
-Turma: 1TDSPW
-
-Thiago Shimizu Sodré dos Santos
-RM: 572867
-E-mail: rm572867@fiap.com.br
-Turma: 1TDSPW
-
-Arthur Mendes Garcia
-RM: 571703
-E-mail: rm571703@fiap.com.br
-Turma: 1TDSPW
+Vinicius de Oliveira — RM 561862 — rm561862@fiap.com.br
+Robison Custodio Junior — RM 572866 — rm572866@fiap.com.br
+Lucas Fernando Silva — RM 564848 — rm564848@fiap.com.br
+Thiago Shimizu Sodré dos Santos — RM 572867 — rm572867@fiap.com.br
+Arthur Mendes Garcia — RM 571703 — rm571703@fiap.com.br
 
 Representante: Arthur Mendes Garcia — rm571703@fiap.com.br
-GitHub Java: https://github.com/proc0x41/bairro-em-dia-java-gs-2026
-GitHub Front End: https://github.com/proc0x41/bairro-em-dia-frontend-gs-2026
-API Render: PENDENTE
-Vídeo Java (até 5 minutos): PENDENTE
+Front End: https://bairro-em-dia-frontend-gs-2026-pygm.vercel.app
+API Java: https://bairro-em-dia-java-gs-2026.onrender.com
